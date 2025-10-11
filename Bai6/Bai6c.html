@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        
+        .form-container {
+            background-color: white;
+            border: 2px solid #4a4a4a;
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        
+        input[type="color"] {
+            width: 60px;
+            height: 30px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        
+        input[type="date"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* Calendar styling */
+        .date-picker-container {
+            position: relative;
+        }
+        
+        .custom-date-display {
+            padding: 8px;
+            border: 1px solid #ccc;
+            background-color: #e8f4ff;
+            display: inline-block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #0066cc;
+        }
+        
+        /* Calendar widget styling */
+        .calendar-widget {
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+            margin-top: 10px;
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 5px;
+            background-color: #f0f0f0;
+        }
+        
+        .month-year-selector {
+            font-weight: bold;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .nav-btn {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .nav-btn:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+            text-align: center;
+        }
+        
+        .day-header {
+            padding: 5px;
+            font-weight: bold;
+            background-color: #f0f0f0;
+            font-size: 12px;
+        }
+        
+        .day {
+            padding: 8px;
+            border: 1px solid #e0e0e0;
+            cursor: pointer;
+            background-color: #fff;
+            font-size: 14px;
+        }
+        
+        .day:hover {
+            background-color: #e8f4ff;
+        }
+        
+        .day.selected {
+            background-color: #cce5ff;
+            font-weight: bold;
+        }
+        
+        .day.other-month {
+            color: #ccc;
+        }
+        
+        .submit-btn {
+            background-color: #f0f0f0;
+            border: 2px solid #888;
+            padding: 10px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .submit-btn:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+        </div>
+        
+        <div class="form-group">
+            <label for="telephone">Telephone Number:</label>
+            <input type="tel" id="telephone" name="telephone">
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+        </div>
+        
+        <div class="form-group">
+            <label for="color">Favorite Color:</label>
+            <input type="color" id="color" name="color" value="#0000FF">
+        </div>
+        
+        <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <div class="date-picker-container">
+                <div class="custom-date-display" id="dateDisplay">07/16/2015</div>
+                
+                <div class="calendar-widget">
+                    <div class="calendar-header">
+                        <select id="monthSelect" class="month-year-selector">
+                            <option value="0">January</option>
+                            <option value="1">February</option>
+                            <option value="2">March</option>
+                            <option value="3">April</option>
+                            <option value="4">May</option>
+                            <option value="5">June</option>
+                            <option value="6" selected>July</option>
+                            <option value="7">August</option>
+                            <option value="8">September</option>
+                            <option value="9">October</option>
+                            <option value="10">November</option>
+                            <option value="11">December</option>
+                        </select>
+                        <select id="yearSelect" class="month-year-selector">
+                            <option value="2015" selected>2015</option>
+                            <option value="2014">2014</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                        </select>
+                        <div class="calendar-nav">
+                            <button class="nav-btn" id="prevMonth">◄</button>
+                            <button class="nav-btn" id="todayBtn">●</button>
+                            <button class="nav-btn" id="nextMonth">►</button>
+                        </div>
+                    </div>
+                    
+                    <div class="calendar-grid" id="calendar">
+                        <div class="day-header">Sun</div>
+                        <div class="day-header">Mon</div>
+                        <div class="day-header">Tue</div>
+                        <div class="day-header">Wed</div>
+                        <div class="day-header">Thu</div>
+                        <div class="day-header">Fri</div>
+                        <div class="day-header">Sat</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button type="submit" class="submit-btn">Submit</button>
+    </div>
+    
+    <script>
+        // Calendar functionality
+        let currentMonth = 6; // July
+        let currentYear = 2015;
+        let selectedDate = new Date(2015, 6, 16);
+        
+        function generateCalendar(month, year) {
+            const calendar = document.getElementById('calendar');
+            // Clear existing days (keep headers)
+            const headers = calendar.querySelectorAll('.day-header');
+            calendar.innerHTML = '';
+            headers.forEach(header => calendar.appendChild(header));
+            
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const daysInPrevMonth = new Date(year, month, 0).getDate();
+            
+            // Previous month days
+            for (let i = firstDay - 1; i >= 0; i--) {
+                const day = document.createElement('div');
+                day.className = 'day other-month';
+                day.textContent = daysInPrevMonth - i;
+                calendar.appendChild(day);
+            }
+            
+            // Current month days
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'day';
+                dayElement.textContent = day;
+                
+                // Highlight selected date
+                if (selectedDate && 
+                    day === selectedDate.getDate() && 
+                    month === selectedDate.getMonth() && 
+                    year === selectedDate.getFullYear()) {
+                    dayElement.classList.add('selected');
+                }
+                
+                dayElement.addEventListener('click', function() {
+                    selectDate(day, month, year);
+                });
+                
+                calendar.appendChild(dayElement);
+            }
+            
+            // Next month days
+            const totalCells = calendar.children.length - 7; // Subtract headers
+            const remainingCells = 35 - totalCells; // Standard calendar has 35 cells (5 weeks)
+            for (let day = 1; day <= remainingCells; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'day other-month';
+                dayElement.textContent = day;
+                calendar.appendChild(dayElement);
+            }
+        }
+        
+        function selectDate(day, month, year) {
+            selectedDate = new Date(year, month, day);
+            const dateDisplay = document.getElementById('dateDisplay');
+            dateDisplay.textContent = formatDate(selectedDate);
+            generateCalendar(month, year);
+        }
+        
+        function formatDate(date) {
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const year = date.getFullYear();
+            return `${month}/${day}/${year}`;
+        }
+        
+        // Event listeners
+        document.getElementById('monthSelect').addEventListener('change', function() {
+            currentMonth = parseInt(this.value);
+            generateCalendar(currentMonth, currentYear);
+        });
+        
+        document.getElementById('yearSelect').addEventListener('change', function() {
+            currentYear = parseInt(this.value);
+            generateCalendar(currentMonth, currentYear);
+        });
+        
+        document.getElementById('prevMonth').addEventListener('click', function() {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            document.getElementById('monthSelect').value = currentMonth;
+            document.getElementById('yearSelect').value = currentYear;
+            generateCalendar(currentMonth, currentYear);
+        });
+        
+        document.getElementById('nextMonth').addEventListener('click', function() {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            document.getElementById('monthSelect').value = currentMonth;
+            document.getElementById('yearSelect').value = currentYear;
+            generateCalendar(currentMonth, currentYear);
+        });
+        
+        document.getElementById('todayBtn').addEventListener('click', function() {
+            const today = new Date();
+            currentMonth = today.getMonth();
+            currentYear = today.getFullYear();
+            document.getElementById('monthSelect').value = currentMonth;
+            document.getElementById('yearSelect').value = currentYear;
+            selectDate(today.getDate(), currentMonth, currentYear);
+            generateCalendar(currentMonth, currentYear);
+        });
+        
+        // Initialize calendar
+        generateCalendar(currentMonth, currentYear);
+        
+        // Form submission
+        document.querySelector('.submit-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Form submitted!');
+        });
+    </script>
+</body>
+</html>

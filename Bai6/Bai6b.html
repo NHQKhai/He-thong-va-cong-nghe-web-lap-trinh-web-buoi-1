@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 20px;
+            background-color: white;
+        }
+        
+        .contact-form {
+            max-width: 750px;
+            background-color: white;
+            border: 1px solid black;
+            padding: 15px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 28px;
+            color: black;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        fieldset {
+            border: 1px solid black;
+            padding: 15px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+        
+        legend {
+            font-family: 'Times New Roman', Times, serif;
+            color: black;
+            padding: 0 5px;
+            font-weight: normal;
+        }
+        
+        .form-group {
+            margin-bottom: 8px;
+        }
+        
+        label {
+            display: inline-block;
+            width: 140px;
+            font-weight: normal;
+            color: black;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            border: 1px solid #7f7f7f;
+            padding: 1px 2px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 14px;
+        }
+        
+        input[type="text"],
+        input[type="email"] {
+            width: 170px;
+        }
+        
+        textarea {
+            width: 400px;
+            height: 150px;
+            vertical-align: top;
+            resize: none;
+        }
+        
+        select {
+            width: 150px;
+            background-color: white;
+        }
+        
+        input[type="file"] {
+            display: none;
+        }
+        
+        .file-button {
+            padding: 1px 6px;
+            background-color: #e0e0e0;
+            border: 1px solid #7f7f7f;
+            cursor: pointer;
+            font-size: 13px;
+            font-family: 'Times New Roman', Times, serif;
+            display: inline-block;
+        }
+        
+        .file-button:active {
+            background-color: #c0c0c0;
+        }
+        
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        
+        button {
+            padding: 4px 12px;
+            background-color: #e0e0e0;
+            border: 1px solid #7f7f7f;
+            cursor: pointer;
+            font-size: 14px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        button:hover {
+            background-color: #d0d0d0;
+        }
+        
+        .checkbox-label {
+            display: inline;
+            width: auto;
+            font-weight: normal;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        #file-name {
+            color: black;
+            font-size: 13px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-form">
+        <h1>Contact Us</h1>
+        
+        <fieldset>
+            <legend>Your message</legend>
+            
+            <div class="form-group">
+                <label for="to">To</label>
+                <input type="text" id="to" name="to" value="Example Cafe">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Your email</label>
+                <input type="email" id="email" name="email">
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="attachment">Attach File</label>
+                <label for="attachment" class="file-button">Choose File</label>
+                <span id="file-name">No file chosen</span>
+                <input type="file" id="attachment" name="attachment" accept="image/*,application/pdf,.doc,.docx,.txt">
+            </div>
+        </fieldset>
+        
+        <fieldset>
+            <legend>How you found us</legend>
+            
+            <div class="form-group">
+                <label for="source">How did you hear of us</label>
+                <select id="source" name="source">
+                    <option value="Google" selected>Google</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Twitter">Twitter</option>
+                    <option value="Friend">Friend</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="newsletter">Newsletter</label>
+                <input type="checkbox" id="newsletter" name="newsletter" checked>
+                <label for="newsletter" class="checkbox-label">Ensure this box is checked if you would like to receive email updates</label>
+            </div>
+        </fieldset>
+        
+        <button type="submit">Send message</button>
+    </div>
+    
+    <script>
+        // Handle file selection
+        document.getElementById('attachment').addEventListener('change', function(e) {
+            var fileName = e.target.files.length > 0 ? e.target.files[0].name : 'No file chosen';
+            document.getElementById('file-name').textContent = fileName;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jackson Electronics Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #a8c8e8;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .container {
+            background-color: #a8c8e8;
+            width: 600px;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .header img {
+            max-width: 300px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        h3 {
+            text-align: center;
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        
+        .form-instruction {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        label {
+            width: 150px;
+            text-align: left;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        select {
+            padding: 3px;
+            border: 1px solid #999;
+            background-color: white;
+        }
+        
+        input[type="text"].full-width,
+        select.full-width {
+            width: 250px;
+        }
+        
+        .city-state-zip {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+        
+        .city-state-zip input.city {
+            width: 150px;
+        }
+        
+        .city-state-zip input.state {
+            width: 50px;
+        }
+        
+        .city-state-zip input.zip {
+            width: 80px;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+        
+        textarea {
+            width: 400px;
+            height: 100px;
+            padding: 3px;
+            border: 1px solid #999;
+            background-color: white;
+            resize: vertical;
+        }
+        
+        .button-group {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 5px 15px;
+            margin: 0 5px;
+            background-color: #e0e0e0;
+            border: 1px solid #999;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #d0d0d0;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #666;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="Jackson.jpg" alt="Jackson Electronics">
+        </div>
+        
+        <h3>Registration Form</h3>
+        
+        <p class="form-instruction">Register your Jackson Electronics product here</p>
+        
+        <form>
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" class="full-width">
+                <label for="lastName" style="margin-left: 20px;">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" class="full-width">
+            </div>
+            
+            <div class="form-group">
+                <label for="address1">Address #1:</label>
+                <input type="text" id="address1" name="address1" class="full-width">
+            </div>
+            
+            <div class="form-group">
+                <label for="address2">Address #2:</label>
+                <input type="text" id="address2" name="address2" class="full-width">
+            </div>
+            
+            <div class="form-group">
+                <label for="city">City:</label>
+                <div class="city-state-zip">
+                    <input type="text" id="city" name="city" class="city">
+                    <label for="state" style="width: auto; margin-left: 10px;">State:</label>
+                    <input type="text" id="state" name="state" class="state">
+                    <label for="zip" style="width: auto; margin-left: 10px;">Zip:</label>
+                    <input type="text" id="zip" name="zip" class="zip">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <select id="country" name="country" style="width: 150px;">
+                    <option value="United States">United States</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Mexico">Mexico</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            
+            <hr>
+            
+            <div class="form-group">
+                <label for="product">Product:</label>
+                <select id="product" name="product" class="full-width">
+                    <option value="ScanMaster">ScanMaster</option>
+                    <option value="Product2">Product 2</option>
+                    <option value="Product3">Product 3</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="datePurchased">Date Purchased:</label>
+                <input type="text" id="datePurchased" name="datePurchased" class="full-width">
+            </div>
+            
+            <div class="form-group">
+                <label for="serialNumber">Serial #:</label>
+                <input type="text" id="serialNumber" name="serialNumber" class="full-width">
+            </div>
+            
+            <div class="form-group">
+                <label>Used for:</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="home" name="usage" value="Home">
+                        <label for="home" style="width: auto;">Home</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="business" name="usage" value="Business">
+                        <label for="business" style="width: auto;">Business</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="government" name="usage" value="Government">
+                        <label for="government" style="width: auto;">Government</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="educational" name="usage" value="Educational Institution">
+                        <label for="educational" style="width: auto;">Educational Institution</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="other" name="usage" value="Other">
+                        <label for="other" style="width: auto;">Other</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>System (check all that apply):</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="windows" name="system" value="Windows">
+                        <label for="windows" style="width: auto;">Windows</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="macintosh" name="system" value="Macintosh">
+                        <label for="macintosh" style="width: auto;">Macintosh</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="unix" name="system" value="UNIX">
+                        <label for="unix" style="width: auto;">UNIX</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="otherSystem" name="system" value="Other">
+                        <label for="otherSystem" style="width: auto;">Other</label>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <div class="form-group">
+                <label for="comments">Comments?</label>
+                <textarea id="comments" name="comments"></textarea>
+            </div>
+            
+            <div class="button-group">
+                <button type="submit">Click to register</button>
+                <button type="reset">Click to cancel</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiddler on the Roof Junior</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header-image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .header-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #ccc;
+        }
+        
+        .content {
+            line-height: 1.6;
+        }
+        
+        .content p {
+            margin: 15px 0;
+        }
+        
+        .brown-text {
+            color: brown;
+        }
+        
+        .italic {
+            font-style: italic;
+        }
+        
+        .slideshow-link {
+            color: blue;
+            text-decoration: none;
+        }
+        
+        .slideshow-link:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-link {
+            color: blue;
+            text-decoration: none;
+        }
+        
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+        
+        .slideshow-container {
+            display: none;
+            margin-top: 30px;
+        }
+        
+        .slideshow-container.active {
+            display: block;
+        }
+        
+        .navigation-controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .navigation-controls img {
+            margin: 0 5px;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .thumbnails {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .thumbnails img {
+            margin: 0 3px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+        
+        .thumbnails img.active {
+            border: 5px solid #333;
+        }
+        
+        .slide-content {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .slide-content img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        
+        .slide-description {
+            padding: 0 40px;
+            font-style: italic;
+            text-align: left;
+        }
+        
+        .home-container {
+            display: block;
+        }
+        
+        .home-container.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Main Header Image -->
+        <div class="header-image">
+            <img src="fiddler.jpg" alt="Fiddler on the Roof">
+        </div>
+        
+        <hr>
+        
+        <!-- Home Content -->
+        <div id="home-content" class="home-container">
+            <div class="content">
+                <p><span class="brown-text">Thanks to everyone who made Fiddler on the
+                    Roof Jr. such a smashing success!</span> After all of the hard work on
+                    rehearsals and set building and promotion, it really paid off. I have
+                    gotten so many comments on your wonderful performances.</p>
+                    
+                <p>I've started putting up a <a href="#" class="slideshow-link" onclick="showSlideshow(); return false;">slide show</a> of the
+                    production. Please feel free to download the files from the Web site.
+                    If you want high resolution photos on a photo CD, please 
+                    contact me.</p>
+                    
+                <p>Once again: <span class="brown-text italic">BRAVO!!!</span> -- Mrs. Juroszek</p>
+            </div>
+        </div>
+        
+        <!-- Slideshow Container -->
+        <div id="slideshow-container" class="slideshow-container">
+            <!-- Navigation Controls -->
+            <div class="navigation-controls">
+                <img src="home.jpg" alt="home" onclick="goHome()">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="start.jpg" alt="start" onclick="goToSlide(1)">
+                <img src="back.jpg" alt="back" onclick="previousSlide()">
+                <img src="forward.jpg" alt="forward" onclick="nextSlide()">
+                <img src="end.jpg" alt="end" onclick="goToSlide(6)">
+            </div>
+            
+            <!-- Thumbnails -->
+            <div class="thumbnails">
+                <img src="thumb1.jpg" alt="slide1" onclick="goToSlide(1)" id="thumb1">
+                <img src="thumb2.jpg" alt="slide2" onclick="goToSlide(2)" id="thumb2">
+                <img src="thumb3.jpg" alt="slide3" onclick="goToSlide(3)" id="thumb3">
+                <img src="thumb4.jpg" alt="slide4" onclick="goToSlide(4)" id="thumb4">
+                <img src="thumb5.jpg" alt="slide5" onclick="goToSlide(5)" id="thumb5">
+                <img src="thumb6.jpg" alt="slide6" onclick="goToSlide(6)" id="thumb6">
+            </div>
+            
+            <hr>
+            
+            <!-- Slide Content -->
+            <div id="slide-content" class="slide-content">
+                <!-- Slide content will be inserted here -->
+            </div>
+        </div>
+        
+        <hr>
+    </div>
+    
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 6;
+        
+        // Slide data
+        const slides = {
+            1: {
+                image: 'slide1.jpg',
+                description: '<i>Do You Love Me?</i> sung by Deb Ingalls and Thomas Gates'
+            },
+            2: {
+                image: 'slide2.jpg',
+                description: '<i>If I Were a Rich Man</i> sung by Thomas Gates'
+            },
+            3: {
+                image: 'slide3.jpg',
+                description: '<i>Matchmaker</i> (L:R) Karen Unger, Rachel Paulson, Lucy Davis, Judy French, Catherine Lewis'
+            },
+            4: {
+                image: 'slide4.jpg',
+                description: '<i>The Bottle Dance</i> (L:R) Tim Lewis, Paul Richtoven, Peter Levin'
+            },
+            5: {
+                image: 'slide5.jpg',
+                description: '<i>Fiddler Cast #2</i> (Front Row): Olivia Young, Angela Unger<br>(Second Row): Terry Brown, Terry Stoller, Brett Anglewright, Diane Lee, Karen Tindale'
+            },
+            6: {
+                image: 'slide6.jpg',
+                description: '<i>Fiddler Full Cast #1</i>'
+            }
+        };
+        
+        function showSlideshow() {
+            document.getElementById('home-content').classList.add('hidden');
+            document.getElementById('slideshow-container').classList.add('active');
+            goToSlide(1);
+        }
+        
+        function goHome() {
+            document.getElementById('home-content').classList.remove('hidden');
+            document.getElementById('slideshow-container').classList.remove('active');
+        }
+        
+        function goToSlide(slideNumber) {
+            if (slideNumber < 1 || slideNumber > totalSlides) return;
+            
+            currentSlide = slideNumber;
+            updateSlideContent();
+            updateThumbnails();
+        }
+        
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                goToSlide(currentSlide + 1);
+            }
+        }
+        
+        function previousSlide() {
+            if (currentSlide > 1) {
+                goToSlide(currentSlide - 1);
+            }
+        }
+        
+        function updateSlideContent() {
+            const slideData = slides[currentSlide];
+            const slideContent = document.getElementById('slide-content');
+            
+            slideContent.innerHTML = `
+                <img src="${slideData.image}" alt="slide${currentSlide}">
+                <blockquote class="slide-description">
+                    <p>${slideData.description}</p>
+                </blockquote>
+            `;
+        }
+        
+        function updateThumbnails() {
+            // Remove active class from all thumbnails
+            for (let i = 1; i <= totalSlides; i++) {
+                const thumb = document.getElementById(`thumb${i}`);
+                if (thumb) {
+                    thumb.classList.remove('active');
+                    thumb.style.borderWidth = '0';
+                }
+            }
+            
+            // Add active class to current thumbnail
+            const activeThumb = document.getElementById(`thumb${currentSlide}`);
+            if (activeThumb) {
+                activeThumb.classList.add('active');
+                activeThumb.style.borderWidth = '5px';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Movie Day</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        /* Khung ngoài cùng */
+        .outer-border {
+            border: 2px solid black;
+            width: fit-content;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        /* Khung cho caption */
+        .caption-border {
+            border: 2px solid black;
+            text-align: center;
+            padding: 8px 20px;
+            margin-bottom: 0;
+            font-size: 20px;
+        }
+        
+        /* Bảng chính */
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 2px solid black;
+            margin-top: 0;
+        }
+        
+        th, td {
+            border: 1px solid black;
+            padding: 3px;
+            text-align: left;
+            position: relative;
+        }
+        
+        /* Khung nhỏ bên trong mỗi ô */
+        .inner-box {
+            border: 1px solid black;
+            padding: 5px 10px;
+            display: block;
+            min-height: 25px;
+        }
+        
+        /* Header thời gian */
+        thead th .inner-box {
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        /* Cột Screen */
+        tbody th .inner-box {
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        /* Ô phim */
+        tbody td .inner-box {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer-border">
+        <div class="caption-border">Classic Movie Day</div>
+        <table>
+            <thead>
+                <tr>
+                    <th><div class="inner-box"></div></th>
+                    <th><div class="inner-box">5 pm</div></th>
+                    <th><div class="inner-box">7 pm</div></th>
+                    <th><div class="inner-box">9 pm</div></th>
+                    <th><div class="inner-box">11 pm</div></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th><div class="inner-box">Screen<br>one</div></th>
+                    <td><div class="inner-box">Star Wars</div></td>
+                    <td><div class="inner-box">Empire Strikes<br>Back</div></td>
+                    <td><div class="inner-box">Return of the Jedi</div></td>
+                    <td><div class="inner-box">The Exorcist</div></td>
+                </tr>
+                <tr>
+                    <th><div class="inner-box">Screen<br>two</div></th>
+                    <td colspan="2"><div class="inner-box">Dances with Wolves</div></td>
+                    <td colspan="2"><div class="inner-box">Gone With the Wind</div></td>
+                </tr>
+                <tr>
+                    <th><div class="inner-box">Screen<br>three</div></th>
+                    <td colspan="2"><div class="inner-box">2001: A Space Odyssey</div></td>
+                    <td><div class="inner-box">The Conversation</div></td>
+                    <td><div class="inner-box">5 Easy Pieces</div></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
